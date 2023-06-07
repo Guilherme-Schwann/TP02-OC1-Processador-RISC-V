@@ -11,10 +11,11 @@
 
 // endmodule
 
-module instructionMemory(readAddress, nomeArquivo, instruction);
+module instructionMemory(readAddress, nomeArquivo, instruction, fimDoArquivo);
     input [31:0] readAddress;
     input [8*25:0] nomeArquivo;
     output reg [31:0] instruction;
+    output reg fimDoArquivo;
 
     integer arquivo;
     integer error;
@@ -27,9 +28,15 @@ module instructionMemory(readAddress, nomeArquivo, instruction);
 
     always @(readAddress)
     begin
-        error = $fseek(arquivo, readAddress*8, 0);
-        error = $fscanf(arquivo, "%b", linha);
-        if (error != -1) instruction = linha;
-        else instruction = 0;
+        if (readAddress === 32'bx) begin
+            instruction = 0;
+            fimDoArquivo = 1;
+        end
+        else begin
+            error = $fseek(arquivo, readAddress*8 + readAddress/4, 0);
+            error = $fscanf(arquivo, "%b", linha);
+            if (error != -1) instruction = linha;
+            else instruction = 0;
+        end
     end
 endmodule
