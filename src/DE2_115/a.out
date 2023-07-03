@@ -1,0 +1,22 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)" "(v12_0-dirty)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/ivl/system.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/ivl/va_math.vpi";
+S_0x555bd70edd90 .scope module, "teste" "teste" 2 1;
+ .timescale 0 0;
+o0x7f31fade5018 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x555bd70c9f20_0 .net "a", 7 0, o0x7f31fade5018;  0 drivers
+v0x555bd710ec50_0 .net "b", 3 0, L_0x555bd710edf0;  1 drivers
+v0x555bd710ed30_0 .net "c", 3 0, L_0x555bd710eec0;  1 drivers
+L_0x555bd710edf0 .part o0x7f31fade5018, 0, 4;
+L_0x555bd710eec0 .part o0x7f31fade5018, 4, 4;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "teste.v";
